@@ -1,59 +1,53 @@
-#rolodexDict = {'phony' : {'name' : 'Phony Phony', 'phone' : 'PhonyNum', 'adress' : 'Pony adress'}}
-rolodexDict = {'name' : 'nombre', 'phone' : 'numbero', 'adress' : 'direction'}
+#INF360 - Programming with Python
+#Alberto Jimenez
+#Midterm Project
+'''
+The purpose of this project is for the user to be able to Save 
+Contact Information, Print contact list,for the FINAl version Id like to add 
+Search or remove. 
+
+Functionalities that are NOT quite there : 
+As of now I am not able to add mpre than one contact in list/dictionary 
+For the FINAl version, the project will be able to store multiple contacts as it should 
+
+'''
+import sys
+
+#This is the contacts Dictionary
+contacts = {'Name: ' : ' ', 'Phone #:' : ' ' }
+
+#The add Contact function, that will later be able to add multiple contact 
 def addContact():
-    global rolodexDict
-    name = input('Fullname of the contact \n : ')
-    adress = input('What is the Address of the contact? \n : ')
+    name = input('Full name of the contact \n : ')
     phone = input('What is their phone number \n : ')
-    rolodexDict.update( {'name' : name, 'phone' : phone, 'adress' : adress})
+    contacts.update({'Name: ' : name, 'Phone #:' : phone})
     print(name +' has been added to your Online Rolodex!!')
-    main()
- 
-#def printRolo() :
-    #global rolodexDict
-    #for name,phone,adress in rolodexDict.items():
-        #print ("\n---------------------------------------------------------")
-        #print (str("Name: ") + str(name))
-        #print (str("Number: ") + str(phone))
-        #print (str("Address: ") + str(adress))
-        #print ("---------------------------------------------------------\n")
-    #print('\nName: %s\nPhone Number: %s\nAdress: %s\n' %(rolodexDict[i]['name'], rolodexDict[i]['phone'], rolodexDict[i]['adress']))
-def searchContact():
-    name = input('Type the person\'s name or nickname\n - ')
-    for i in rolodexDict:
-        if i.lower() == name.lower() or rolodexDict[i]['name'].lower() == name.lower():
-            print('\nName: %s\nPhone Number: %s\nAdress: %s\n' %(rolodexDict[i]['name'], rolodexDict[i]['phone'], rolodexDict[i]['adress']))
-        else:
-            print('Name not found')
-         
 
- 
+#Prints all contacts 
+def printRolo() :
+    print(contacts)
+    
+
+#Displays the welcoming page as well as options to choose from 
 def main():
-    print('Welcome to your online Rolodex !')
-    print('** Choose from these options: **')
-    print('*********1.Add Contact *********')
-    #print('********2.Print Roledex ********')
-    print('********3.Search Contact *******')
-    #print('*******4.Remove Contact ********')
-    print('********5.Exit Program *********')
-    case = str(input('\n'))
-    if case == '1':
-        print('works')
-        addContact()
-    #elif case == '2':
-        #print('works')
-        #printRolo()
-    elif case == '3':
-        print('works')
-        #addPerson()
-    #elif case == '4':
-        #print('works')
-        
-    elif case == '5':
-        print('Thank you! Good Bye!!')
-        quit()
-    else:
-        print('Invalid choice! Choice must be between 1-5: ')
-        quit()
-main()
+    while True :
+        print('Welcome to your online Rolodex !')
+        print('** Choose from these options: **')
+        print('*********1.Add Contact *********')
+        print('********2.Print Roledex ********')
+        #print('********3.Search Contact *******')
+        print('********4.Exit Program *********')
+        case = str(input('\n'))
+        if case == '1':
+            addContact()
+        elif case == '2':
+            printRolo()
+        #elif case == '3':
+            #search()
+        elif case == '4':
+            print('Thank you! Good Bye!!')
+            sys.exit(0)
+        else:
+            print('INVALID choice! Choice must be between 1,2 or 4: ')
 
+main()
